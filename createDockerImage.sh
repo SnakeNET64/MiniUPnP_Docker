@@ -1,7 +1,7 @@
 ## Détecter la derniere version : http://miniupnp.free.fr/files/rest.php/tags?count=1
 upnpcLatest=`curl http://miniupnp.free.fr/files/rest.php/tags?count=1 | jq -r ".tags.miniupnpc | .[] | .file"`
 
-## Créer le conteneur docker qui servira à compiler
+## Créer le conteneur docker qui servira à compiler le package.
 cat <<ENDOFFILE >Dockerfile
   FROM alpine:latest
   RUN apk add alpine-sdk
@@ -9,7 +9,7 @@ cat <<ENDOFFILE >Dockerfile
   ENTRYPOINT ["/deploy/usr/bin/upnpc"]
 ENDOFFILE
 
-## Compiler le docker
+## Compiler dans le docker
 sudo docker build -t miniupnpc .
 
 ## Tester
@@ -23,7 +23,7 @@ sudo docker cp miniupnpc:/deploy ./AlpineBinaries
 ## Supprimer le docker 'miniupnpc' temporaire
 sudo docker rm miniupnpc 2>/dev/null
 
-## Créer le fichier de build docker
+## Créer le fichier de build docker light avec les binaires fraichement extraits
 cat <<ENDOFFILE >Dockerfile
   FROM alpine:latest
   COPY AlpineBinaries/deploy /
