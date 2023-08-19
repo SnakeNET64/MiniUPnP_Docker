@@ -1,7 +1,7 @@
-# MiniUPnP_Docker
+# MiniUPnPc_Docker
 Allow you to use miniupnp client thanks to docker.
 
-MiniUPnP binaries need to be compiled before being used and no up-to-date docker exist in the docker hub.
+MiniUPnPc binaries need to be compiled before being used and no up-to-date docker exist in the docker hub.
 As you probably just want to use this tool out-of-the-box, here is a way to create yourself the docker image for MiniUPnP client with the latest sources.
 
 # Pre-requisite : 
@@ -15,4 +15,4 @@ As you probably just want to use this tool out-of-the-box, here is a way to crea
 - run the script
 
 # What you will get
-- a docker export of MiniUPnP
+- a docker export of MiniUPnPc
